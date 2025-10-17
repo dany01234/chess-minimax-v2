@@ -20,14 +20,11 @@ class ChessPiece:
         
     def filter_moves(self, moves, board):
 
-        board.whites = [p for p in board.whites if isinstance(p, ChessPiece)]
-        board.blacks = [p for p in board.blacks if isinstance(p, ChessPiece)]
-
+        
         final_moves = moves[:]
         for move in moves:
 
-            if isinstance(board[move[0]][move[1]], King):
-                continue
+           
 
             board.make_move(self, move[0], move[1], keep_history=True)
             if board.king_is_threatened(self.color, move):
